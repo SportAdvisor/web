@@ -1,11 +1,16 @@
 import React, {Component} from 'react'
 import {Layout, Menu, Breadcrumb, Icon} from 'antd'
+import {Route} from 'react-router-dom'
+
+import {SignUp} from '../SignUp'
+import {SignIn} from '../SignIn'
+
 import './App.scss'
 
 const {SubMenu} = Menu
 const {Header, Content, Footer, Sider} = Layout
 
-class App extends Component {
+export class App extends Component {
     render() {
         return (
             <Layout>
@@ -68,9 +73,10 @@ class App extends Component {
                     </Layout>
                 </Content>
                 <Footer style={{textAlign: 'center'}}>Ant Design ©2016 Created by Ant UED</Footer>
+
+                <Route exact path="/sign-up" component={SignUp} />
+                <Route exact path="/sign-in" component={SignIn} />
             </Layout>
         )
     }
 }
-
-export default App
