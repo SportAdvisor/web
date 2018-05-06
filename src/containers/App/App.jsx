@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {Layout, Menu, Breadcrumb, Icon} from 'antd'
 import {Route} from 'react-router-dom'
+import {translate} from 'react-i18next'
 
 import {SignUp} from '../SignUp'
 import {SignIn} from '../SignIn'
@@ -10,8 +11,11 @@ import './App.scss'
 const {SubMenu} = Menu
 const {Header, Content, Footer, Sider} = Layout
 
+@translate('pages')
 export class App extends Component {
     render() {
+        const {t} = this.props
+
         return (
             <Layout>
                 <Header className="header">
@@ -69,7 +73,7 @@ export class App extends Component {
                                 </SubMenu>
                             </Menu>
                         </Sider>
-                        <Content style={{padding: '0 24px', minHeight: 280}}>Content</Content>
+                        <Content style={{padding: '0 24px', minHeight: 280}}>{t('pages:homeTitle')}</Content>
                     </Layout>
                 </Content>
                 <Footer style={{textAlign: 'center'}}>Ant Design ©2016 Created by Ant UED</Footer>
