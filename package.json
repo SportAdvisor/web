@@ -5,12 +5,12 @@
   "proxy": "http://localhost:5553",
   "lint-staged": {
     "src/**/*.{js,jsx,json,css}": [
-      "prettier --print-width 80 --single-quote --tab-width 4 --no-semi --no-bracket-spacing --jsx-bracket-same-line --write",
+      "prettier --print-width 100 --single-quote --tab-width 4 --no-semi --no-bracket-spacing --jsx-bracket-same-line --write",
       "git add"
     ]
   },
   "prettier": {
-    "printWidth": 80,
+    "printWidth": 100,
     "singleQuote": true,
     "tabWidth": 4,
     "semi": false,

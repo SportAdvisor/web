@@ -1,7 +1,12 @@
 import React, {Component} from 'react'
 import {Form, Input, Button, Checkbox} from 'antd'
+import {translate} from 'react-i18next'
+
+import {Translate} from '../../i18n/translate'
+
 const FormItem = Form.Item
 
+@translate()
 class SignUp extends Component {
     handleSubmit = e => {
         e.preventDefault()
@@ -14,39 +19,48 @@ class SignUp extends Component {
 
     render() {
         const {getFieldDecorator} = this.props.form
+        const formsTranslate = new Translate('forms.fields', this.props.t)
 
         return (
             <Form onSubmit={this.handleSubmit} className="login-form">
-                <FormItem label="E-mail">
+                <FormItem label={formsTranslate.translate('email.label')}>
                     {getFieldDecorator('email', {
                         rules: [
                             {
                                 type: 'email',
-                                message: 'The input is not valid E-mail!'
+                                message: formsTranslate.translate(
+                                    'email.validationMessages.invalid'
+                                )
                             },
                             {
                                 required: true,
-                                message: 'Please input your E-mail!'
+                                message: formsTranslate.translate(
+                                    'email.validationMessages.required'
+                                )
                             }
                         ]
                     })(<Input />)}
                 </FormItem>
-                <FormItem label="Password">
+                <FormItem label={formsTranslate.translate('password.label')}>
                     {getFieldDecorator('password', {
                         rules: [
                             {
                                 required: true,
-                                message: 'Please input your password!'
+                                message: formsTranslate.translate(
+                                    'password.validationMessages.required'
+                                )
                             }
                         ]
                     })(<Input type="password" />)}
                 </FormItem>
-                <FormItem label="Name">
+                <FormItem label={formsTranslate.translate('name.label')}>
                     {getFieldDecorator('name', {
                         rules: [
                             {
                                 required: true,
-                                message: 'Please input your name!',
+                                message: formsTranslate.translate(
+                                    'name.validationMessages.required'
+                                ),
                                 whitespace: true
                             }
                         ]
@@ -58,12 +72,15 @@ class SignUp extends Component {
                         rules: [
                             {
                                 required: true,
-                                message: 'Please click on checkbox!'
+                                message: formsTranslate.translate(
+                                    'agreement.validationMessages.required'
+                                )
                             }
                         ]
                     })(
                         <Checkbox>
-                            I have read the <a href="">agreement</a>
+                            {formsTranslate.translate('agreement.label')}{' '}
+                            <a href="">{formsTranslate.translate('agreement.document')} </a>
                         </Checkbox>
                     )}
                 </FormItem>
