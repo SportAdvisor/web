@@ -3,20 +3,12 @@ import {Form, Input, Button, Checkbox} from 'antd'
 import {translate} from 'react-i18next'
 
 import {Translate} from '../../i18n/translate'
+import {makeErrorFieldsMap} from '../../utils/forms'
 
 const FormItem = Form.Item
 
 @translate()
 class SignUp extends Component {
-    handleSubmit = e => {
-        e.preventDefault()
-        this.props.form.validateFields((err, values) => {
-            if (!err) {
-                console.log('Received values of form: ', values)
-            }
-        })
-    }
-
     render() {
         const {getFieldDecorator} = this.props.form
         const formsTranslate = new Translate('forms.fields', this.props.t)
@@ -67,20 +59,20 @@ class SignUp extends Component {
                     })(<Input />)}
                 </FormItem>
                 <FormItem>
-                    {getFieldDecorator('agreement', {
+                    {getFieldDecorator('eula', {
                         valuePropName: 'checked',
                         rules: [
                             {
                                 required: true,
                                 message: formsTranslate.translate(
-                                    'agreement.validationMessages.required'
+                                    'eula.validationMessages.required'
                                 )
                             }
                         ]
                     })(
                         <Checkbox>
-                            {formsTranslate.translate('agreement.label')}{' '}
-                            <a href="">{formsTranslate.translate('agreement.document')} </a>
+                            {formsTranslate.translate('eula.label')}{' '}
+                            <a href="">{formsTranslate.translate('eula.document')} </a>
                         </Checkbox>
                     )}
                 </FormItem>
@@ -91,6 +83,18 @@ class SignUp extends Component {
                 </FormItem>
             </Form>
         )
+    }
+
+    handleSubmit = e => {
+        const {form, onSubmit} = this.props
+        e.preventDefault()
+        form.validateFields((err, values) => {
+            if (!err) {
+                onSubmit(values)
+                    .then(response => console.log(response))
+                    .catch(e => form.setFields(makeErrorFieldsMap(e.response.data.errors, values)))
+            }
+        })
     }
 }
 

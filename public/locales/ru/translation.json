@@ -24,7 +24,7 @@
                     "required": "Введите Ваше имя"
                 }
             },
-            "agreement": {
+            "eula": {
                 "label": "Я принимаю пользовательское",
                 "document": "соглашение",
                 "validationMessages": {

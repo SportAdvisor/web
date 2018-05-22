@@ -6,7 +6,7 @@ import {LocaleProvider} from 'antd'
 
 import {antdLocaleDetect} from '../../i18n'
 import {Home} from '../Home'
-import {SignUp} from '../SignUp'
+import SignUp from '../SignUp'
 import {SignIn} from '../SignIn'
 
 import './App.scss'
