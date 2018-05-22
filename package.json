@@ -2,7 +2,7 @@
   "name": "sport-advisor",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:5553",
+  "proxy": "http://sportadvisor-lb-81878895.us-east-1.elb.amazonaws.com/api",
   "lint-staged": {
     "src/**/*.{js,jsx,json,css}": [
       "prettier --print-width 100 --single-quote --tab-width 4 --no-semi --no-bracket-spacing --jsx-bracket-same-line --write",
