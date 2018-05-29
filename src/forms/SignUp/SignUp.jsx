@@ -94,6 +94,7 @@ class SignUp extends Component {
                     .signUp(values)
                     .then(response => {
                         actions.setTokens(response.value.data.data)
+                        actions.push('/')
                     })
                     .catch(e => form.setFields(makeErrorFieldsMap(e.response.data.errors, values)))
             }

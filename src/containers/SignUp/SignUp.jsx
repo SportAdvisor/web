@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
+import {push} from 'react-router-redux'
 import {Row, Col} from 'antd'
 import {translate} from 'react-i18next'
 
@@ -27,7 +28,7 @@ class SignUp extends Component {
 function mapDispatchToProps(dispatch) {
     return {
         actions: {
-            ...bindActionCreators({signUp, setTokens}, dispatch)
+            ...bindActionCreators({signUp, setTokens, push}, dispatch)
         }
     }
 }
