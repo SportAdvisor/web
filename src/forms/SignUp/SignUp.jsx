@@ -86,12 +86,15 @@ class SignUp extends Component {
     }
 
     handleSubmit = e => {
-        const {form, onSubmit} = this.props
+        const {form, actions} = this.props
         e.preventDefault()
         form.validateFields((err, values) => {
             if (!err) {
-                onSubmit(values)
-                    .then(response => console.log(response))
+                actions
+                    .signUp(values)
+                    .then(response => {
+                        actions.setTokens(response.value.data.data)
+                    })
                     .catch(e => form.setFields(makeErrorFieldsMap(e.response.data.errors, values)))
             }
         })

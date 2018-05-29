@@ -6,6 +6,7 @@ import {translate} from 'react-i18next'
 
 import {SignUpForm} from '../../forms/SignUp'
 import {signUp} from '../../modules/signUp'
+import {setTokens} from '../../modules/auth'
 
 @translate()
 class SignUp extends Component {
@@ -16,7 +17,7 @@ class SignUp extends Component {
             <Row type="flex" justify="center" align="center">
                 <Col span={8}>
                     <h1>{t('forms.signUp.title')}</h1>
-                    <SignUpForm onSubmit={actions.signUp} />
+                    <SignUpForm actions={actions} />
                 </Col>
             </Row>
         )
@@ -26,7 +27,7 @@ class SignUp extends Component {
 function mapDispatchToProps(dispatch) {
     return {
         actions: {
-            ...bindActionCreators({signUp}, dispatch)
+            ...bindActionCreators({signUp, setTokens}, dispatch)
         }
     }
 }
