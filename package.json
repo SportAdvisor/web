@@ -53,6 +53,7 @@
     "jest": "20.0.4",
     "lint-staged": "7.0.4",
     "lodash": "4.17.10",
+    "nock": "9.3.3",
     "object-assign": "4.1.1",
     "postcss-flexbugs-fixes": "3.2.0",
     "postcss-loader": "2.0.8",
@@ -70,6 +71,7 @@
     "redux-actions": "2.3.2",
     "redux-devtools-extension": "2.13.2",
     "redux-logger": "3.0.6",
+    "redux-mock-store": "1.5.3",
     "redux-promise-middleware": "5.1.1",
     "redux-thunk": "2.2.0",
     "resolve": "1.6.0",
@@ -88,10 +90,13 @@
     "babel-eslint": "7.2.3",
     "babel-jest": "20.0.3",
     "babel-loader": "7.1.2",
+    "babel-plugin-import": "1.7.0",
+    "babel-plugin-transform-decorators-legacy": "1.3.4",
     "babel-preset-react-app": "3.1.1",
     "babel-runtime": "6.26.0",
-    "babel-plugin-transform-decorators-legacy": "1.3.4",
+    "jest-localstorage-mock": "2.2.0",
     "node-sass": "4.8.3",
+    "react-test-renderer": "16.4.1",
     "sass-loader": "7.0.1"
   },
   "jest": {
@@ -105,6 +110,7 @@
       "<rootDir>/src/**/__tests__/**/*.{js,jsx,mjs}",
       "<rootDir>/src/**/?(*.)(spec|test).{js,jsx,mjs}"
     ],
+    "setupTestFrameworkScriptFile": "<rootDir>/src/setupTests.js",
     "testEnvironment": "node",
     "testURL": "http://localhost",
     "transform": {
