@@ -4,21 +4,20 @@ import {Switch, Route} from 'react-router-dom'
 import {translate} from 'react-i18next'
 import {LocaleProvider} from 'antd'
 
-import {antdLocaleDetect} from '../../i18n'
+import {getAntdLocaleByI18nLanguage} from '../../i18n'
 import {Home} from '../Home'
 import SignUp from '../SignUp'
 import {SignIn} from '../SignIn'
 
 import './App.scss'
 
-const {Header, Content, Footer, Sider} = Layout
-
 @translate()
 export class App extends Component {
     render() {
+        const {Header, Content, Footer, Sider} = Layout
         const {i18n} = this.props
         return (
-            <LocaleProvider locale={antdLocaleDetect(i18n)}>
+            <LocaleProvider locale={getAntdLocaleByI18nLanguage(i18n)}>
                 <Layout>
                     <Header className="header">
                         <div className="logo" />
