@@ -4,7 +4,7 @@ import LanguageDetector from 'i18next-browser-languagedetector'
 import {reactI18nextModule} from 'react-i18next'
 
 const i18nextOptions = {
-    fallbackLng: 'en',
+    fallbackLng: ['ru', 'en'],
     load: 'languageOnly',
     debug: true,
     react: {

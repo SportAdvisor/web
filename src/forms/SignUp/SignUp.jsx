@@ -2,7 +2,6 @@ import React, {Component} from 'react'
 import {Form, Input, Button, Checkbox} from 'antd'
 import {translate} from 'react-i18next'
 
-import {Translate} from '../../i18n/translate'
 import {makeErrorFieldsMap} from '../../utils/forms'
 
 const FormItem = Form.Item
@@ -10,69 +9,61 @@ const FormItem = Form.Item
 @translate()
 class SignUp extends Component {
     render() {
-        const {getFieldDecorator} = this.props.form
-        const formsTranslate = new Translate('forms.fields', this.props.t)
+        const {
+            t,
+            form: {getFieldDecorator}
+        } = this.props
 
         return (
             <Form onSubmit={this.handleSubmit} className="login-form">
-                <FormItem label={formsTranslate.translate('email.label')}>
+                <FormItem label={t('forms.fields.email.label')}>
                     {getFieldDecorator('email', {
                         rules: [
                             {
                                 type: 'email',
-                                message: formsTranslate.translate(
-                                    'email.validationMessages.invalid'
-                                )
+                                message: t('forms.fields.email.validationMessages.invalid')
                             },
                             {
                                 required: true,
-                                message: formsTranslate.translate(
-                                    'email.validationMessages.required'
-                                )
+                                message: t('forms.fields.email.validationMessages.required')
                             }
                         ]
                     })(<Input />)}
                 </FormItem>
-                <FormItem label={formsTranslate.translate('password.label')}>
+                <FormItem label={t('forms.fields.password.label')}>
                     {getFieldDecorator('password', {
                         rules: [
                             {
                                 required: true,
-                                message: formsTranslate.translate(
-                                    'password.validationMessages.required'
-                                )
+                                message: t('forms.fields.password.validationMessages.required')
                             }
                         ]
                     })(<Input type="password" />)}
                 </FormItem>
-                <FormItem label={formsTranslate.translate('name.label')}>
+                <FormItem label={t('forms.fields.name.label')}>
                     {getFieldDecorator('name', {
                         rules: [
                             {
                                 required: true,
-                                message: formsTranslate.translate(
-                                    'name.validationMessages.required'
-                                ),
+                                message: t('forms.fields.name.validationMessages.required'),
                                 whitespace: true
                             }
                         ]
                     })(<Input />)}
                 </FormItem>
                 <FormItem>
-                    {getFieldDecorator('eula', {
+                    {getFieldDecorator('EULA', {
                         valuePropName: 'checked',
                         rules: [
                             {
                                 required: true,
-                                message: formsTranslate.translate(
-                                    'eula.validationMessages.required'
-                                )
+                                message: t('forms.fields.eula.validationMessages.required')
                             }
                         ]
                     })(
                         <Checkbox>
-                            {formsTranslate.translate('eula.label')}{' '}
-                            <a href="">{formsTranslate.translate('eula.document')} </a>
+                            {t('forms.fields.eula.label')}{' '}
+                            <a href="">{t('forms.fields.eula.document')} </a>
                         </Checkbox>
                     )}
                 </FormItem>
@@ -96,7 +87,10 @@ class SignUp extends Component {
                         actions.setTokens(response.value.data.data)
                         actions.push('/')
                     })
-                    .catch(e => form.setFields(makeErrorFieldsMap(e.response.data.errors, values)))
+                    .catch(e => {
+                        const errorFieldsMap = makeErrorFieldsMap(e.response.data.errors, values)
+                        form.setFields(errorFieldsMap)
+                    })
             }
         })
     }
