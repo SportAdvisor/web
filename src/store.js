@@ -6,7 +6,7 @@ import {routerMiddleware} from 'react-router-redux'
 import {composeWithDevTools} from 'redux-devtools-extension'
 import throttle from 'lodash/throttle'
 
-import {loadState, saveState} from './localStorage'
+import {loadState, saveState} from './utils/localStorage'
 
 export function configureStore(rootReducer, history) {
     const persistedState = loadState()
