@@ -6,8 +6,7 @@ import {Row, Col} from 'antd'
 import {translate} from 'react-i18next'
 
 import {SignUpForm} from '../../forms/SignUp'
-import {signUp} from '../../modules/signUp'
-import {setTokens} from '../../modules/auth'
+import {signUp} from '../../modules/auth'
 
 @translate()
 class SignUp extends Component {
@@ -28,7 +27,7 @@ class SignUp extends Component {
 function mapDispatchToProps(dispatch) {
     return {
         actions: {
-            ...bindActionCreators({signUp, setTokens, push}, dispatch)
+            ...bindActionCreators({signUp, push}, dispatch)
         }
     }
 }

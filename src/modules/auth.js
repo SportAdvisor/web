@@ -1,10 +1,8 @@
-import {createAction, handleAction} from 'redux-actions'
+import {post} from '../utils/rest'
 
-export const SET_TOKENS = 'SET_TOKENS'
+const SIGN_UP = 'SIGN_UP'
 
-export const setTokens = createAction(SET_TOKENS, tokens => tokens)
-export const tokensReducer = handleAction(
-    SET_TOKENS,
-    (state, action) => ({...state, ...action.payload.data}),
-    {}
-)
+export const signUp = data => ({
+    type: SIGN_UP,
+    payload: post('/users/sign-up', data)
+})

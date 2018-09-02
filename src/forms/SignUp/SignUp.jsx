@@ -1,8 +1,10 @@
+import Cookie from 'js-cookie'
 import React, {Component} from 'react'
 import {Form, Input, Button, Checkbox} from 'antd'
 import {translate} from 'react-i18next'
 
 import {makeErrorFieldsMap} from '../../utils/forms'
+import {SA_TOKEN_NAME} from '../../constants'
 
 const FormItem = Form.Item
 
@@ -84,7 +86,7 @@ class SignUp extends Component {
                 actions
                     .signUp(values)
                     .then(response => {
-                        actions.setTokens(response.value.data.data)
+                        Cookie.set(SA_TOKEN_NAME, response.value.data)
                         actions.push('/')
                     })
                     .catch(e => {
