@@ -1,7 +1,35 @@
 import React, {Component} from 'react'
+import {connect} from 'react-redux'
+import {bindActionCreators} from 'redux'
+import {push} from 'react-router-redux'
+import {Row, Col} from 'antd'
+import {translate} from 'react-i18next'
 
-export class SignUp extends Component {
+import {SignUpForm} from '../../forms/SignUp'
+import {signUp} from '../../modules/auth'
+
+@translate()
+class SignUp extends Component {
     render() {
-        return <div>Sign Up</div>
+        const {t, actions} = this.props
+
+        return (
+            <Row type="flex" justify="center" align="center">
+                <Col span={8}>
+                    <h1>{t('forms.signUp.title')}</h1>
+                    <SignUpForm actions={actions} />
+                </Col>
+            </Row>
+        )
     }
 }
+
+function mapDispatchToProps(dispatch) {
+    return {
+        actions: {
+            ...bindActionCreators({signUp, push}, dispatch)
+        }
+    }
+}
+
+export default connect(null, mapDispatchToProps)(SignUp)

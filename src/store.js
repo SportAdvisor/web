@@ -1,12 +1,18 @@
 import {createStore, applyMiddleware, compose} from 'redux'
 import thunk from 'redux-thunk'
 import logger from 'redux-logger'
+import promiseMiddleware from 'redux-promise-middleware'
 import {routerMiddleware} from 'react-router-redux'
 import {composeWithDevTools} from 'redux-devtools-extension'
+import throttle from 'lodash/throttle'
 
-export function configureStore(rootReducer, history, initialState = {}) {
+import {loadState, saveState} from './utils/localStorage'
+
+export function configureStore(rootReducer, history) {
+    const persistedState = loadState()
+
     const enhancers = []
-    const middleware = [thunk, routerMiddleware(history)]
+    const middleware = [thunk, promiseMiddleware(), routerMiddleware(history)]
 
     if (process.env.NODE_ENV === 'development') {
         enhancers.push(composeWithDevTools())
@@ -14,5 +20,13 @@ export function configureStore(rootReducer, history, initialState = {}) {
     }
 
     const composedEnhancers = compose(applyMiddleware(...middleware), ...enhancers)
-    return createStore(rootReducer, initialState, composedEnhancers)
+    const store = createStore(rootReducer, persistedState, composedEnhancers)
+
+    store.subscribe(
+        throttle(() => {
+            saveState({tokens: store.getState().tokens})
+        }, 1000)
+    )
+
+    return store
 }
