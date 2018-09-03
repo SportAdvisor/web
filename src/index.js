@@ -9,7 +9,6 @@ import {i18nConf} from './i18n/'
 import {configureStore} from './store'
 import {App} from './containers/App'
 import rootReducer from './modules'
-import './index.scss'
 
 export const history = createHistory()
 export const store = configureStore(rootReducer, history)

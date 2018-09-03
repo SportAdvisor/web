@@ -8,20 +8,17 @@ import {getAntdLocaleByI18nLanguage} from '../../i18n'
 import {Home} from '../Home'
 import SignUp from '../SignUp'
 import {SignIn} from '../SignIn'
-
-import './App.scss'
+import {HomeScreen} from '../../components/HomeScreen'
 
 @translate()
 export class App extends Component {
     render() {
-        const {Header, Content, Footer, Sider} = Layout
+        const {Content, Footer, Sider} = Layout
         const {i18n} = this.props
         return (
             <LocaleProvider locale={getAntdLocaleByI18nLanguage(i18n)}>
                 <Layout>
-                    <Header className="header">
-                        <div className="logo" />
-                    </Header>
+                    <HomeScreen />
                     <Content style={{padding: '0 50px'}}>
                         <Layout style={{padding: '24px 0', background: '#fff'}}>
                             <Sider width={200} style={{background: '#fff'}}>
