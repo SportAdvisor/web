@@ -9,7 +9,10 @@ export class HomeScreen extends Component {
         return (
             <SAHomeScreen>
                 <SAHeader>
-                    <SALogo src={logo} alt="Sport Advisor" />
+                    <SALogo to="/">
+                        <img src={logo} alt="Sport Advisor" />
+                        <span>Sport Advisor</span>
+                    </SALogo>
                 </SAHeader>
             </SAHomeScreen>
         )
