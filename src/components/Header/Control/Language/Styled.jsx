@@ -1,9 +1,19 @@
 import styled from 'styled-components'
 import {Select} from 'antd'
 
-export const StyledSelectWrapper = styled.div``
+export const StyledSelectWrapper = styled.div`
+    .ant-select {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 18px;
+    }
+`
 export const StyledSelect = styled(Select)`
-    font-family: 'Open Sans', sans-serif;
-    font-size: 20px;
+    .ant-select-selection {
+        height: 40px;
+    }
+
+    .ant-select-selection__rendered {
+        line-height: 36px;
+    }
 `
 export const StyledOption = styled(Select.Option)``
