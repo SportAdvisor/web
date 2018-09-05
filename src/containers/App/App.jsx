@@ -10,7 +10,7 @@ import {mainTheme} from './Styled'
 import {Home} from '../Home'
 import SignUp from '../SignUp'
 import {SignIn} from '../SignIn'
-import {HomeScreen} from '../../components/HomeScreen'
+import {SAHomeScreen} from '../../components/HomeScreen'
 
 @translate()
 export class App extends Component {
@@ -21,7 +21,7 @@ export class App extends Component {
             <LocaleProvider locale={getAntdLocaleByI18nLanguage(i18n)}>
                 <ThemeProvider theme={mainTheme}>
                     <Layout>
-                        <HomeScreen />
+                        <SAHomeScreen />
                         <Content style={{padding: '0 50px'}}>
                             <Layout style={{padding: '24px 0', background: '#fff'}}>
                                 <Sider width={200} style={{background: '#fff'}}>

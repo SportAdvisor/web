@@ -1,20 +1,14 @@
 import React, {Component} from 'react'
 
-import {SAHomeScreen} from './Styled'
-import {SAHeader, SALogo} from '../Header'
-import logo from 'static/icons/logo.svg'
+import {StyledHomeScreen} from './Styled'
+import {SAHeader} from '../Header'
 
-export class HomeScreen extends Component {
+export class SAHomeScreen extends Component {
     render() {
         return (
-            <SAHomeScreen>
-                <SAHeader>
-                    <SALogo to="/">
-                        <img src={logo} alt="Sport Advisor" />
-                        <span>Sport Advisor</span>
-                    </SALogo>
-                </SAHeader>
-            </SAHomeScreen>
+            <StyledHomeScreen>
+                <SAHeader />
+            </StyledHomeScreen>
         )
     }
 }
