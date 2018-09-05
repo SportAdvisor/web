@@ -9,6 +9,6 @@ export const StyledHeader = styled(Layout.Header)`
     z-index: 1;
     width: 100%;
     height: 76px;
-    background: transparent;
+    background: ${props => props.theme.header.bgColor};
     border-bottom: 1px solid ${props => props.theme.header.transitionalBorderColor};
 `
