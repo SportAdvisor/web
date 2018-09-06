@@ -1,5 +1,8 @@
 {
     "title": "Заголовок",
+    "header": {
+        "signIn": "Войти"
+    },
     "forms": {
         "signUp": {
             "title": "Регистрация"

@@ -12,7 +12,7 @@ const i18nextOptions = {
     }
 }
 
-export const i18nConf = i18n
+export const i18nInstance = i18n
     .use(Backend)
     .use(LanguageDetector)
     .use(reactI18nextModule)

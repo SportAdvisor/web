@@ -5,7 +5,7 @@ import {ConnectedRouter} from 'react-router-redux'
 import createHistory from 'history/createBrowserHistory'
 import {I18nextProvider} from 'react-i18next'
 
-import {i18nConf} from './i18n/'
+import {i18nInstance} from './i18n/'
 import {configureStore} from './store'
 import {App} from './containers/App'
 import rootReducer from './modules'
@@ -19,7 +19,7 @@ class Root extends React.Component {
         return (
             <Provider store={store}>
                 <ConnectedRouter history={history}>
-                    <I18nextProvider i18n={i18nConf}>
+                    <I18nextProvider i18n={i18nInstance}>
                         <App />
                     </I18nextProvider>
                 </ConnectedRouter>

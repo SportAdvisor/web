@@ -13,7 +13,7 @@ export const StyledSelect = styled(Select)`
     }
 
     .ant-select-selection__rendered {
-        line-height: 36px;
+        line-height: 34px;
     }
 `
 export const StyledOption = styled(Select.Option)``
